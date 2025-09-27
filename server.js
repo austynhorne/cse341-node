@@ -1,8 +1,18 @@
-const express = require("express");
+require('dotenv').config();
+const express = require('express');
+const bodyParser = require('body-parser');
+const db = require('./db/connect');
+
 const app = express();
-const homeRouter = require("./routes/home");
+const port = process.env.PORT || 8080;
 
-app.use("/", homeRouter);
+app.use(bodyParser.json());
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on ${PORT}`));
+const contactsRoute = require('./routes/contacts');
+app.use('/api/contacts', contactsRoute);
+
+db.connectToServer(() => {
+  app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+  });
+});
