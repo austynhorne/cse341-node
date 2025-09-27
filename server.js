@@ -8,6 +8,10 @@ const port = process.env.PORT || 8080;
 
 app.use(bodyParser.json());
 
+app.get('/', (req, res) => {
+  res.send('Server is running!');
+});
+
 const contactsRoute = require('./routes/contacts');
 app.use('/api/contacts', contactsRoute);
 
