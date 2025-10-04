@@ -1,1 +1,41 @@
+### GET all contacts
 GET http://localhost:8080/api/contacts
+Accept: application/json
+
+###
+
+GET http://localhost:8080/api/contacts/68d831f689ce7237343437b9
+Accept: application/json
+
+###
+
+# POST new contact
+POST http://localhost:8080/api/contacts/
+Content-Type: application/json
+
+{
+  "firstName": "Thomas",
+  "lastName": "Horne",
+  "email": "test4@gmail.com",
+  "favoriteColor": "purple",
+  "birthday": "02-17-1993"
+}
+
+###
+
+# PUT update contact - replace <id> with real ID from POST
+PUT http://localhost:8080/api/contacts/68d831f689ce7237343437b9
+Content-Type: application/json
+
+{
+  "firstName": "Austyn",
+  "lastName": "Horne",
+  "email": "test55d@example.com",
+  "favoriteColor": "teal",
+  "birthday": "02-17-1993"
+}
+
+###
+
+# DELETE contact - replace <id> with real ID
+DELETE http://localhost:8080/api/contacts/68e16e44fb4ee12b32cf1259
